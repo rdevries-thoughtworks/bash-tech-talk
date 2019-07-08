@@ -225,6 +225,28 @@ cp "$tmp_file" "$(normalized_filename "$tmp_file")"
 
 ---
 
+class: middle
+
+```bash
+ftest() {
+  trap 'docker-compose down' EXIT
+  # docker-compose up -d and run tests against it
+}
+```
+See [the trap built-in](https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins-1)
+
+???
+
+*Roald*
+
+* Generally, you can trap a signal
+* There are a few special ones:
+  * EXIT is executed on errors or successful exit
+  * ERR is executed only for errors
+
+---
+
+class: center, middle
 
 # Also interesting
 
