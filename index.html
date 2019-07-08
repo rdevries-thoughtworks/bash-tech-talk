@@ -229,7 +229,20 @@ cp "$tmp_file" "$(normalized_filename "$tmp_file")"
 # Also interesting
 
 * osh
+
+  - Idea: We write so much bash, yet it has so many old warts.
+    Re-implementing everything in Ruby/Python is not feasible (Kubernetes >48K LOC Bash).
+    OSH is supposed to bring safer language features to Bash users with a feasible migration strategy
+
 * bats
+  - Bash Automated Testing System
+
+```bash
+@test "addition using bc" {
+  result="$(echo 2+2 | bc)"
+  [ "$result" -eq 4 ]
+}
+```
 
 ---
 
