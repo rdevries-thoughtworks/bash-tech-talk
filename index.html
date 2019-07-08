@@ -248,6 +248,23 @@ See [the trap built-in](https://www.gnu.org/software/bash/manual/bash.html#Bourn
 
 class: middle
 
+```bash
+in-docker() {
+  docker run -it --rm -v "$(pwd)":/home/dev ... dev-image "$@"
+}
+```
+
+???
+
+*Roald*
+
+* Prefix functions are very convenient
+* Don't make your script dependent on docker
+
+---
+
+class: middle
+
 # Also interesting
 
 * osh
