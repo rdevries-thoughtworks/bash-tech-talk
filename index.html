@@ -29,8 +29,6 @@ class: center, middle
 
 ---
 
-class: middle
-
 # Goal of this talk
 
 1. Let's automate everything
@@ -40,8 +38,6 @@ class: middle
 -Christoph
 
 ---
-
-class: middle
 
 # Why care about bash
 
@@ -56,8 +52,6 @@ class: middle
 - Hence, it's your entry drug into automation
 
 ---
-
-class: middle
 
 # What's bash anyway?
 
@@ -80,8 +74,6 @@ class: middle
 
 ---
 
-class: middle
-
 # Why is bash not a decent PL?
 
 * Environment variables are mutable globals
@@ -99,8 +91,6 @@ class: middle
 *Roald*
 
 ---
-
-class: middle
 
 # Why is bash not a decent PL? (cont.)
 
@@ -226,8 +216,6 @@ Use shellcheck (https://github.com/koalaman/shellcheck) to tell you about onfors
 
 ---
 
-class: middle
-
 # Typical things, and how you want to do them in bash
 
 ???
@@ -255,8 +243,6 @@ cp "$tmp_file" "$(normalized_filename "$tmp_file")"
 
 ---
 
-class: middle
-
 ```bash
 ftest() {
   trap 'docker-compose down' EXIT
@@ -275,8 +261,6 @@ See [the trap built-in](https://www.gnu.org/software/bash/manual/bash.html#Bourn
   * ERR is executed only for errors
 
 ---
-
-class: middle
 
 ```bash
 using-stage-env() (
@@ -298,8 +282,6 @@ $ using-stage-env publish-messages
 
 ---
 
-class: middle
-
 ```bash
 in-docker() {
   docker run -it --rm -v "$(pwd)":/home/dev ... dev-image "$@"
@@ -318,8 +300,6 @@ $ in-docker npm start
 
 ---
 
-class: middle
-
 ```bash
 f() {
   if [ -t 1 ]
@@ -337,8 +317,6 @@ f() {
 * Check if the user is executing this interactively
 
 ---
-
-class: middle
 
 # Also interesting
 
@@ -363,8 +341,6 @@ class: middle
 * [Advanced Bash-Scripting Guide](https://www.tldp.org/LDP/abs/html/)
 
 ---
-
-class: middle
 
 # Caveats / WAT
 
