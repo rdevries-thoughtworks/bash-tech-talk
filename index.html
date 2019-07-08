@@ -256,9 +256,15 @@ See [the trap built-in](https://www.gnu.org/software/bash/manual/bash.html#Bourn
 class: middle
 
 ```bash
-in-docker() {
-  docker run -it --rm -v "$(pwd)":/home/dev ... dev-image "$@"
-}
+using-stage-env() (
+  export MQTT_USERNAME="$(pass mqtt/username)"
+  export MQTT_PASSWORD="$(pass mqtt/password)"
+  "$@"
+)
+```
+
+```bash
+$ using-stage-env publish-messages
 ```
 
 ???
@@ -266,6 +272,25 @@ in-docker() {
 *Roald*
 
 * Prefix functions are very convenient
+
+---
+
+class: middle
+
+```bash
+in-docker() {
+  docker run -it --rm -v "$(pwd)":/home/dev ... dev-image "$@"
+}
+```
+
+```bash
+$ in-docker npm start
+```
+
+???
+
+*Roald*
+
 * Don't make your script dependent on docker
 
 ---
