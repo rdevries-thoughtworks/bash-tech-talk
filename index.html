@@ -37,6 +37,18 @@ Notes go here
 
 class: center, middle
 
+# Goal of this talk
+
+1. Let's automate everything
+2. Bad Bash code? Do better!
+
+???
+-Christoph
+
+---
+
+class: center, middle
+
 # Why care about bash
 
 ---
@@ -53,9 +65,97 @@ class: center, middle
 
 ---
 
-class: center, middle
+class:
 
-# Good basic practices
+# Good basic practises
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+main() {
+  local environment="$1"
+
+  ...
+}
+
+main "$@"
+```
+
+Let's unwrap...
+
+???
+-Christoph
+---
+
+# Good basic paractises (cont.)
+
+Put bash into "safe mode".
+
+```bash
+set -e
+
+cd /tmp
+rm -rf *
+
+
+set -u
+
+rm -rf "${DIR}/"
+
+
+set -o pipefail
+
+cat for_deletion | xargs rm
+```
+
+Some more reading: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+
+---
+
+# Good basic paractises (cont.)
+
+Limit options to reduce failures: e.g. scope variables
+
+```bash
+readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+main() {
+  local environment="$1"
+
+  ...
+}
+```
+
+---
+
+# Good basic paractises (cont.)
+
+Follow a predictable style, reduce surprises
+
+```bash
+main() {
+
+  ...
+}
+
+main "$@"
+```
+
+Find more in the "Shell Style Guide" from Google: https://google.github.io/styleguide/shell.xml
+
+---
+
+# Good basic paractises (cont.)
+
+Always quote, deal with values including spaces
+```bash
+main "$@"
+```
+
+Use shellcheck (https://github.com/koalaman/shellcheck) to tell you about onforseen issues.
 
 ---
 
