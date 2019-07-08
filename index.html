@@ -150,6 +150,8 @@ Some more reading: https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pi
 
 Limit options to reduce failures: e.g. scope variables
 
+Bash has higher level concepts!
+
 ```bash
 readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -204,7 +206,25 @@ class: center, middle
 
 ---
 
-class: center, middle
+# Typical things: Return values
+
+Oh noes, I cannot return anything apart from integers.
+
+Bash takes strings from the left and shoves them to the right. It's good at that!
+But we can play along.
+
+```bash
+
+normalized_filename() {
+  local path="$1"
+  echo "$path" | sed 's/[ -]/_/'
+}
+
+cp "$tmp_file" "$(normalized_filename "$tmp_file")"
+```
+
+---
+
 
 # Also interesting
 
